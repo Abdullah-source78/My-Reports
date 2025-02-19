@@ -1,0 +1,87 @@
+.test thead {
+ 	background-color: #8080eb !important;
+    color: white !important;
+    padding: 10px;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 0;
+    z-index: 1;
+}
+.test tbody {
+	background-color: white !important;
+	color: black !important;
+}
+.test tfoot {
+    background-color: #ff0000 !important;
+    color: black !important;
+}
+.test tr:nth-child(even) {
+    background-color: #dadaeb;
+}
+.test tr:hover {
+	background-color: #a4a4a4 !important;
+}
+
+.test .o_form_view .oe_link, .o_form_view .oe_link:active, .o_form_view .oe_link.active, .o_form_view .oe_link[disabled], fieldset[disabled] .o_form_view .oe_link {
+	background-color: #7a99f1 !important;
+    border: none !important;
+    border-radius: 3px !important;
+    font-size: 14px !important;
+    box-shadow: 4px 3px 5px 0px #002d18 !important;
+}
+.test .entry {
+	background-color: #000000 !important;
+    width: 250px;
+    margin: 0px auto;
+    height: 30px !important;
+    color: white;
+    font-weight: bold;
+    padding-left: 25px;
+    padding-top: 5px;
+}
+.test .entry a {
+	color: white !important;
+}
+.test .entry .o_form_view.o_form_readonly .o_form_uri:first-line {
+	color: white !important;
+}
+.test .entry .o_form_view.o_form_readonly .o_form_uri: first-line {
+	text-align: center !important;
+	color: white !important;
+}
+.test div.o_checkbox {
+	display: none !important;
+}
+/*.test .o_list_view tbody > tr.o_group_header {
+	background-color: #f0f3f1 !important;
+    background-image: linear-gradient(to bottom, #906189, #8b6184) !important;
+}
+.o_list_view tbody > tr.o_group_header .o_group_name {
+    color: #fafdff !important;
+    padding-left: 15px;
+}*/
+/*.o_list_view_grouped.o_list_view .o_list_number {
+    text-align: center !important;
+    color: white !important;
+    font-weight: bold !important;
+}*/
+/*.test table {
+	width: 1000px;
+	margin: 0px auto;
+	margin-top: 45px; 
+}*/
+/*.test button {
+	background: #7a99f1;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    box-shadow: 4px 3px 5px 0px #002d18;
+}*/
+/*
+.test table tr td:first-child {
+  display: none !important;
+}
+.test table tr th:first-child {
+  display: none !important;
+}
+*/

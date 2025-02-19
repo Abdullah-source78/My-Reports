@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <report
+
+            id="report_for_custom_balance_sheet" 
+            model="balance.sheet.wizard"
+            name="custom_balance_sheet.balance_sheet_template"
+            file="custom_balance_sheet.balance_sheet_template"
+            report_type="qweb-html"
+            string="Custom Balance Sheet"
+            menu="False"/>
+  
+
+        <record id="custom_balance_sheet_wizard" model="ir.ui.view">
+            <field name="name">custom_balance_sheet_wizard</field>
+            <field name="model">balance.sheet.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Custom Balance Sheet">
+                    
+                    <group name="group_top">
+
+                        <group name="group_left">
+
+                            <!-- <field name="date_from" attrs="{'invisible':[('typed','!=','profit')],'required':[('typed','=','profit')]}"/>
+                            <field name="typed"/> -->
+                            <field name="date_from" />
+
+                        </group>
+
+                        <group name="group_right">
+
+                            <!-- <field name="date" attrs="{'invisible':[('typed','!=','balance')],'required':[('typed','=','balance')]}"/> -->
+                            <!-- <field name="date_to" attrs="{'invisible':[('typed','!=','profit')],'required':[('typed','=','profit')]}"/> -->
+                            <field name="date_to" />
+
+                        </group>
+
+                    </group>
+
+                    <footer style="height: 30px !important; border: none !important;">
+                        <button name="action_generate_balance_sheet" type="object" string="Print" class = "oe_highlight" />
+                    </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="custom_balance_sheet_action" model="ir.actions.act_window">
+            <field name="name">Custom Accounting Reports</field>
+            <field name="res_model">balance.sheet.wizard</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="custom_balance_sheet_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="custom_balance_sheet_menu_item" name="Custom Accounting Reports" action="custom_balance_sheet_action" sequence="-100" />
+
+    <!-- <record id="res_coa_ecube_customization" model="ir.ui.view"> 
+        <field name="name">res_coa_ecube_customization</field> 
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='name']" position="after">
+                
+                <field name="path" />
+                <field name="path_actual" />
+                <field name="account_type" />
+                <field name="random_ids" />
+                <button name="settle" type="object" string="Settle" class = "oe_highlight"/>
+                
+            </xpath>
+        </field>
+    </record> -->
+
+    <!-- <record id="dynamic_accounts_accounts" model="ir.ui.view">
+            <field name="name">dynamic_accounts_accounts</field>
+            <field name="model">accounts.accounts</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Report">
+                    
+                    <group name="group_top">
+
+                        <group name="group_left">
+
+                            <field name="name"/>
+                            <field name="account_type"/>
+                            <field name="user_type_id"/>
+
+                        </group>
+
+                        <group name="group_right">
+
+
+                            <field name="code"/>
+                            <field name="random_ids" invisible="1"/>
+                            <field name="parent_id"/>
+                            <field name="account_id"/>
+                            <field name="internal_type"/>
+                            
+                        </group>
+
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="dynamic_accounts_action" model="ir.actions.act_window">
+            <field name="name">Accounts Accounts</field>
+            <field name="res_model">accounts.accounts</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record> -->
+
+        <!-- <menuitem id="dynamic_accounts_menu_item" name="Dynamic Accounts" action="dynamic_accounts_action" parent="account.menu_finance_reports" /> -->
+
+
+       
+    </data>
+</odoo>

@@ -1,0 +1,8 @@
+<odoo>
+    <data noupdate="0">
+       <!--  <record id="security_group_for_product_movement_report" model="res.groups">
+            <field name="name">security_group_for_product_movement_report</field>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record> -->
+    </data>
+</odoo>

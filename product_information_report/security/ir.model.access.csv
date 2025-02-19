@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_information_report,product.information.report,model_product_information_report,base_access_rights.admin_non_technical,1,1,1,1
+access_product_information_treeview,product.information.treeview,model_product_information_treeview,base_access_rights.admin_non_technical,1,1,1,1

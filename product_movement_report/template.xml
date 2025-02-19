@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <report
+            id="report_for_product_movement_report"
+            model="product.movement.report"
+            name="product_movement_report.product_movement_report"
+            file="product_movement_report.product_movement_report"
+            report_type="qweb-html"
+            string="Product Movement Report"
+            menu="False"/>
+            <!-- paperformat="paperformat_product_movement_report" -->
+
+        <record id="product_movement_report_records_wizard" model="ir.ui.view">
+            <field name="name">product_movement_report_records_wizard</field>
+            <field name="model">product.movement.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Report">
+                    
+                    <group name="group_top">
+
+                        <group name="group_left">
+                            <field name="form"/>
+                            
+                            <!-- <field name="typee"/> -->
+                            <field name="product_id" widget ="many2many_tags" required = "1"/>
+
+                        </group>
+
+                        <group name="group_right">
+                            <field name="to"/>
+                            <!-- <field name="product_ids" widget ="many2many_tags" attrs="{'invisible': [('typee', '==', 'all')] , 'required ':[('typee' , '==', 'specific')]}"/> -->
+                        </group>
+
+                    </group>
+
+                        <footer style="height: 30px !important; border: none !important;">
+                            <button name="generate_report" type="object" string="Print" class = "oe_highlight"/>
+                        </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="product_movement_report_menu_action" model="ir.actions.act_window">
+            <field name="name">Product Movement Report</field>
+            <field name="res_model">product.movement.report</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="product_movement_report_records_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- <menuitem id="product_movement_report_menu_item" name="Reports" parent="customer_menu.operation_main_form_main_menu"/> -->
+        <menuitem id="child_product_movement_report_menu_item" name="Product Movement Report" action="product_movement_report_menu_action" />
+        
+    </data>
+</odoo>

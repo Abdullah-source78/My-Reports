@@ -1,0 +1,378 @@
+<style>
+    .page-break {
+        page-break-before: always;
+    }
+    .with-padding {
+        padding-top: 50px;
+    }
+</style>
+
+<t t-name="custom_balance_sheet.balance_sheet_template">
+    <t t-call="web.external_layout">
+        <t t-set="record_count" t-value="0"/>
+        <t t-set="total_records" t-value="balance_data | length"/>
+        
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3>Balance Sheet Report</h3>
+                <p>From: <t t-esc="date_from"/> To: <t t-esc="date_to"/></p>
+            </div>
+        </div>
+
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Account Name</th>
+                    <th>Subtype</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="balance_data" t-as="account">
+                    <t t-set="record_count" t-value="record_count + 1"/>
+                    
+                    <!-- Page break after 57 records -->
+                    <t t-if="record_count % 57 == 1 and record_count != 1">
+                        <div class="page-break with-padding"></div>
+                    </t>
+
+                    <tr>
+                        <td><t t-esc="account['code']"/></td>
+                        <td><t t-esc="account['name']"/></td>
+                        <td><t t-esc="account['subtype_name']"/></td>
+                        <td><t t-esc="'{:.3f}'.format(account['balance'])"/></td>
+                    </tr>
+                </t>
+            </tbody>
+        </table>
+
+        <!-- Print totals only on the last page -->
+        <t t-if="record_count % 57 <= 50">
+            <table class="table table-condensed">
+                <tfoot>
+                    <tr><td colspan="3"><strong>Total Assets</strong></td><td><t t-esc="'{:.3f}'.format(total_assets)"/></td></tr>
+                    <tr><td colspan="3"><strong>Total Liabilities</strong></td><td><t t-esc="'{:.3f}'.format(total_liabilities)"/></td></tr>
+                    <tr><td colspan="3"><strong>Total Equity</strong></td><td><t t-esc="'{:.3f}'.format(total_equity)"/></td></tr>
+                    <tr><td colspan="3"><strong>Total Liabilities + Equity</strong></td><td><t t-esc="'{:.3f}'.format(total_liab_equity)"/></td></tr>
+                </tfoot>
+            </table>
+        </t>
+    </t>
+</t>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>   
+
+        <template id="balance_sheet_template">
+
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+
+                
+                        <div class="page">
+                            
+                            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                            <!-- <link rel="stylesheet" href="/web/static/lib/fontawesome/css/font-awesome.css"/> -->
+
+                            <style type="text/css">
+                                                    
+                                @media (min-width: 1200px) {
+                                    .container {
+                                       width: 100%;
+                                    }
+                                }
+                                @media (min-width: 992px) {
+                                    .container {
+                                       width: 100%;
+                                    }
+                                }
+                                @media (min-width: 768px) {
+                                    .container {
+                                       width: 100%;
+                                    }
+                                }
+                                .container {
+                                   width: 100%;
+                                }
+                                body.o_in_iframe {
+                                    margin: 0px !important;
+                                    padding: 0px !important;
+                                }
+                                .header,
+                                .footer {
+                                    display: none;
+                                }
+
+                                .main_wraper {
+                                    width: 1000px;
+                                    margin: 0px auto;
+                                    margin-top: 30px;
+                                }
+                                .main_box {
+                                    width: 100%;
+                                }
+                                .box_a {
+                                    width: 45%;
+                                    float: left;
+                                    display: inline-block;
+                                }
+                                .box_b {
+                                    float: left;
+                                    width: 50%;
+                                    display: inline-block;
+                                    margin-bottom: 10px;    
+                                    margin-left: 40px;
+                                }
+                                h1 {
+                                    border-bottom: 3px solid;
+                                    margin-top: 0px;
+                                    margin-bottom: 0px;
+                                }
+                                .arian {
+                                    margin-top: 0px;
+                                }
+                                .date {
+                                    margin-top: 0px;
+                                    float: right;
+                                }
+                                h2 {
+                                    margin: 0px;
+                                }
+                                h3 {
+                                    border-bottom: 3px solid;
+                                }
+                                .bor-bottom {
+                                    border-bottom: 3px solid;
+                                }
+                                .dash-border {
+                                    border-bottom: 0px solid;
+                                    border-style: dashed; 
+                                }
+                                .clearfloat {
+                                    clear: both;
+                                    float: none;
+                                    width: 100%;
+                                    height: 1px;
+                                    display: block;
+                                }
+                                .liquid {
+                                    float: right;
+                                }
+                                .bor-dashed {
+                                    border-bottom: 0px solid;
+                                    border-style: dashed;
+                                }
+                                th {
+                                    text-align: left;
+                                    font-size: 13px;
+                                    white-space: nowrap; 
+                                }
+                                td {
+                                    text-align: left;
+                                    font-size: 13px; 
+                                    font-weight: bold;
+                                    border-bottom: 1px solid lightgray;
+                                }
+                                tr:hover {
+                                    background-color: yellow;
+                                }
+                                .but_width {
+                                    width: 70px;
+                                    min-width: 70px;
+                                    max-width: 70px;
+                                }
+                                .level1 {
+                                    padding-left: 0px;
+                                }
+                                .level2  {
+                                    padding-left: 5px;
+                                }
+                                .test  {
+                                    padding-left: 40px;
+                                }
+                                .level3 {
+                                    padding-left: 10px;
+                                }
+                                .level4 {
+                                    padding-left: 30px;
+                                }
+                                .level5 {
+                                    padding-left: 50px;
+                                }
+                                .level6 {
+                                    padding-left: 70px;
+                                }
+                                .level7 {
+                                    padding-left: 90px;
+                                }
+                                .level8 {
+                                    padding-left: 110px;
+                                }
+                                .level9 {
+                                    padding-left: 130px;
+                                }
+
+                                <!-- .page-break {
+                                    page-break-before: always;  
+                                }
+                                .page {
+                                    page-break-after: always;  
+                                }
+ -->
+                               <!--  .page-break {
+                                    page-break-before: always;
+                                }
+                                .with-padding {
+                                    padding-top: 50px;
+                                } -->
+
+                            </style>
+
+
+
+                            <div class="page">
+                                <div class="main_wraper">
+                                  <h1>BALANCE SHEET</h1>
+                                  
+                                  <div class="date" style="text-align: right; margin-bottom: 20px;">
+                                    <p>
+                                      <b>From:</b>
+                                      <t t-if="date_from">
+                                        <span t-esc="date_from.strftime('%d %b %Y')"/>
+                                      </t>
+                                      <t t-else="">
+                                        <span>--</span>
+                                      </t>
+                                      <!-- &nbsp;&nbsp; -->
+                                      <b>To:</b>
+                                      <t t-if="date_to">
+                                        <span t-esc="date_to.strftime('%d %b %Y')"/>
+                                      </t>
+                                      <t t-else="">
+                                        <span>--</span>
+                                      </t>
+                                    </p>
+                                  </div>
+
+                                <div class="page">
+  
+                                  <table width="100%" style="border-collapse: collapse;">
+                                   <!-- <t t-set="record_count" t-value="0"/> -->
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Account Name</th>
+                                            <th>Account Type</th>
+                                            <th>Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                     <t t-foreach="balance_data" t-as="page">
+                                        <!-- <t t-foreach="page" t-as="account"> -->
+                                        <!-- <t t-set="record_count" t-value="record_count + 1"/> -->
+                    
+                                        <!-- Add page break with padding after first page -->
+                                       <!--  <t t-if="record_count > 50 and (record_count - 1) % 60 == 0">
+                                            <div class="page-break with-padding"></div>
+                                        </t> -->
+
+                                            <tr>
+                                                <td><t t-esc="page['code']"/></td>
+                                                <td><t t-esc="page['name']"/></td>
+                                                <td><t t-esc="page['subtype_name']"/></td>
+                                                <td><t t-esc="'{:.3f}'.format(page['balance'])"/></td>
+                                            </tr>
+                                        <!-- </t> -->
+                                      </t>  
+                                    </tbody>
+                                  </table>
+                                </div>  
+
+                                  
+                                    
+                                     <!-- <t t-if="page != balance_data[-1]">
+
+                                        <div style="height: 50px;"></div>  
+                                        <div class="page-break"/>
+                                    </t> -->
+                                
+
+
+                                
+
+
+
+
+                                  <div class="totals" style="margin-top: 30px;">
+                                <table width="50%" style="border-collapse: collapse; float: right;">
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #ccc;"><b>Total Assets:</b></td>
+                                        <td style="padding: 5px; border: 1px solid #ccc; text-align: right;">
+                                            <span t-esc=" '{:,.2f}'.format(total_assets)"/>
+                                        </td>
+                                    </tr>
+
+                                    <!-- <tr t-if="total_equity != 0"> -->
+                                    <tr >
+                                        <td style="padding: 5px; border: 1px solid #ccc;"><b>Total Equity:</b></td>
+                                        <td style="padding: 5px; border: 1px solid #ccc; text-align: right;">
+                                            <span t-esc=" '{:,.2f}'.format(total_equity)"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #ccc;"><b>Total Liabilities:</b></td>
+                                        <td style="padding: 5px; border: 1px solid #ccc; text-align: right;">
+                                            <span t-esc=" '{:,.2f}'.format(total_liabilities)"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 5px; border: 1px solid #ccc;"><b>Liabilities + Equity:</b></td>
+                                        <td style="padding: 5px; border: 1px solid #ccc; text-align: right;">
+                                            <span t-esc=" '{:,.2f}'.format(total_liab_equity)"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                                  
+                                </div>
+                              </div>
+
+                          </div>    
+
+                 
+
+                </t>
+                
+            </t>
+
+        </template>
+
+    </data>
+
+</odoo>
