@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+            <report
+            id="report_for_change_rate_report" 
+            model="change.rate"
+            name="change_rate_report.change_rate_xml"
+            file="change_rate_report.change_rate_xml"
+            report_type="qweb-html"
+            string="Change Rate"
+            menu="True"/>
+    </data>
+</odoo>

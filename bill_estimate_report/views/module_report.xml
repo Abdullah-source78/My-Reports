@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <template id="bill_estimate_xml">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <t t-as="o" t-foreach="docs">
+                        <link rel="stylesheet"
+                              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+                        <div class="page">
+                            <style type="text/css">
+                                @media (min-width: 992px) {
+                                .container {
+                                width: 100%;
+                                }
+                                }
+
+                                @media (min-width: 768px) {
+                                .container {
+                                width: 100%;
+                                }
+                                }
+
+                                .container {
+                                width: 100%;
+                                }
+
+                                body {
+                                margin: 0px !important;
+                                }
+
+                                body.o_in_iframe {
+                                margin-top: 0px !important;
+                                }
+
+                                .header,
+                                .footer {
+                                display: none !important;
+                                }
+
+                               h2 {
+                                display: inline-block; /* Ensure the element takes up only the space needed */
+                                border: 2px solid black; 
+                                border-radius: 50px; 
+                                padding: 10px 30px; 
+                                text-align: center;
+                                font-size: 32px;
+                                background-color: #f4f4f4;
+                                color: black; 
+                                }
+
+                                h3 {
+                                text-decoration: underline;
+                                }
+
+                                .main-data {
+                                width: 100%;
+                                }
+
+                                .centered {
+                                <!-- display: flex; -->
+                                
+                                width: 1100px;
+                                margin: auto;
+                                margin-top: 50px;
+                                }
+
+                                .center_div {
+                                width: 100%;
+                                margin-top: 30px;
+                                }
+
+                                .left_div {
+                                width: 30%;
+                                display: inline-block;
+                                float: left;
+                                }
+
+                                right_div {
+                                    width: 50%;
+                                    display: flex;              
+                                    justify-content: flex-end;   
+                                    text-align: left;           
+                                    margin: 0;
+                                    padding: 0;
+                                }
+
+
+
+
+
+                                .left_div_1 {
+                                width: 35%;
+                                float: left;
+                                display: inline-block;
+                                }
+
+                                .left {
+                                width: 45%;
+                                display: inline-block;
+                                float: left;
+                                }
+
+                                .right {
+                                width: 45%;
+                                display: inline-block;
+                                float: right;
+                                }
+
+                                .center_div_2 {
+                                width: 30%;
+                                float: left;
+                                display: inline-block;
+                                }
+
+                                .center_div_2_2 {
+                                width: 23.24%;
+                                float: left;
+                                display: inline-block;
+                                }
+
+                                .right_div_3 {
+                                width: 35%;
+                                float: left;
+                                display: inline-block;
+                                }
+
+                                .clearfloat {
+                                clear: both;
+                                float: none;
+                                }
+
+                                .solid {
+                                font-weight: bold;
+                                margin-right: 5px;
+                                }
+
+                                .liquid {
+                                float: right;
+                                width: 150px;
+                                }
+
+                                <!-- table {
+                                    padding: 8px;
+                                    margin-top: 30px;
+                                    text-align: center;
+                                    border-collapse: collapse; 
+                                }
+
+                                td, th {
+                                    padding: 8px;
+                                    padding-left: 8px;
+                                    font-size: 15px;
+                                    border: hidden !important;
+                                    border-bottom: 1px solid; 
+                                } -->
+                                table {
+                                padding: 8px;
+                                margin-top: 30px;
+                                text-align:center;
+                                }
+
+                                td {
+                                border-bottom: 1px solid;
+                                padding: 8px;
+                                padding-left: 8px;
+                                font-size: 15px;
+                                }
+
+                                table th {
+                                padding-left: 6px;
+                                font-size: 15px;
+                                border: hidden;
+                                border-bottom: 1px solid;
+                                }
+
+                                .no-margin {
+                                margin-top: 0px;
+                                margin-bottom: 0px;
+                                }
+
+                                <!-- .watermark {
+                                position: fixed;
+                                font-size: 180px;
+                                opacity: 0.5;
+                                z-index: 99;
+                                color: lightgray;
+                                width: auto;
+                                -ms-transform: rotate(20deg);
+                                -webkit-transform: rotate(20deg);
+                                transform: rotate(-40deg);
+                                top: 220px;
+                                } -->
+
+                                h4 {
+                                border: 2px solid !important;
+                                padding: 2px;
+                                background: black;
+                                color: white;
+                                font-size: 22px;
+                                text-align: center;
+                                width: 30%;
+                                float: right;
+                                border-radius: 10px;
+                                margin-right: 40px;
+                                }
+
+                                .tot {
+                                margin-left: 30px;
+                                margin-right: 3px;
+                                }
+
+                                .h4_amt {
+                                float: right;
+                                background: white;
+                                width: 70%;
+                                height: 23px;
+                                color: black;
+                                text-align: right;
+                                }
+
+                                p {
+                                font-size: 15px;
+                                }
+
+                                .totel {
+                                float: right;
+                                }
+                            </style>
+                            <div class="main-data">
+                                
+                                <div style="justify-content: center;
+                                text-align:center;">
+                                    <h2 style="font-style:italic;" >   
+                                        Credit Estimate
+                                    </h2>
+
+                                </div>    
+                                    <div class="centered" >
+                                        <div class="center_div" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                                <div class="left_div" style="flex: 1; padding: 0;">
+                                                    <p class="no-margin">
+                                                        <h5><span t-esc="o.partner_id.name"></span></h5>
+                                                        <h5><span t-esc="o.partner_id.city_id.name"></span></h5>
+                                                    </p>
+                                                </div>
+                                                
+                                                <!-- Right div -->
+                                               <div style="flex: 1; text-align: right; padding: 0; margin: 0; width: 30%; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-end;">
+                                                    <p style="margin: 0; padding: 0; display: inline-flex; align-items: baseline; line-height: 0;">
+                                                        <span class="solid" style="margin: 0; padding: 0;">No:</span>
+                                                        <span class="liquid" t-esc="o.seq_num" style="margin: 0; padding: 0;"></span>
+                                                    </p>
+                                                    <p style="margin: 0; padding: 0; display: inline-flex; align-items: baseline; line-height: 0;">
+                                                        <span class="solid" style="margin: 0; padding: 0;">Dated:</span>
+                                                        <span class="liquid" t-esc="o.date_invoice" style="margin: 0; padding: 0;"></span>
+                                                    </p>
+                                                    <p style="margin: 0; padding: 0; display: inline-flex; align-items: baseline; line-height: 0;">
+                                                        <span class="solid" style="margin: 0; padding: 0;">Party Bill No:</span>
+                                                        <span class="liquid" t-esc="o.so_ref_id.name" style="margin: 0; padding: 0;"></span>
+                                                    </p>
+                                                </div>
+
+
+
+
+
+                                        </div>
+                                       
+                                        
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                 
+                                    
+                                     
+                                   
+                                    <table width="100%" >
+                                        <tr>
+                                            <th>
+                                                <span>
+                                                    <i class="fa fa-hashtag" aria-hidden="true"></i>
+                                                </span>
+                                                <span>Item</span>
+                                            </th>
+                                            <th>
+                                                <span>
+                                                    <i class="fa fa-barcode" aria-hidden="true"></i>
+                                                </span>
+                                                <span>Part No</span>
+                                            </th>
+                                            <th>
+                                                <span>
+                                                    <i class="fa fa-file-text" aria-hidden="true"></i>
+                                                </span>
+                                                <span>Description/Series</span>
+                                            </th>
+                                            <th>
+                                                <span>
+                                                    <i class="fa fa-cubes" aria-hidden="true"></i>
+                                                </span>
+                                                <span>Quantity</span>
+                                            </th>
+                                            <th>
+                                                <span>
+                                                    <i class="fa fa-dollar" aria-hidden="true"></i>
+                                                </span>
+                                                <span>Rate</span>
+                                            </th>
+                                            <th>
+                                                <span>
+                                                    <i class="fa fa-calculator" aria-hidden="true"></i>
+                                                </span>
+                                                <span>Amount</span>
+                                            </th>
+
+                                            
+                                        </tr>
+                                        <t t-set="sr_no" t-value="0"/>
+                                        <t t-set="discount" t-value="0"/>
+                                        <t t-set="qty" t-value="0"/>
+                                        <t t-set="subtotal_price" t-value="0"/>
+                                        <t t-foreach="o.invoice_line_ids" t-as="data">
+                                           
+                                            
+                                                <t t-if="data.product_id.name">
+                                                    <t t-set="sr_no" t-value="sr_no + 1"/>
+                                                    <tr>
+                                                        <td>
+                                                            <span t-esc="sr_no"></span>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="data.product_id.parts_number"></span>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="data.product_id.name"></span> <br/>
+                                                                <t t-foreach="barcodes" t-as="barcode">
+                                                                    <t t-if="barcode.serial_id.product_id.id == data.product_id.id">
+                                                                        <span t-esc="barcode.serial_no"> </span>
+                                                                        
+                                                                    </t>
+                                                                </t>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="'{0:,.2f}'.format(float(data.quantity))"></span>
+                                                            <t t-set="qty" t-value="qty + data.quantity"/>
+                                                        </td>
+
+                                                        <td>
+                                                            
+                                                           
+                                                            <t t-if="o.purchase_type == 'foreign'">
+                                                                <span t-esc="'{0:,.2f}'.format(float(data.unit_price_dollar))"></span>
+                                                            </t> 
+
+                                                            <span t-esc="'{0:,.2f}'.format(float(data.price_unit))"></span> 
+
+                                                            <!-- <t t-set="total_price" t-value="total_price + data.price_unit"/> -->
+                                                        
+                                                        </td>
+                                                        
+                                                        <td>
+                                                            
+                                                            
+                                                            <t t-if="o.purchase_type == 'local'">
+                                                                <span t-esc="'{0:,.2f}'.format(float(data.price_subtotal))"></span>
+                                                            </t>
+                                                            <t t-if="o.type == 'out_invoice'">
+                                                                <span t-esc="'{0:,.2f}'.format(float(data.price_subtotal))"></span>
+                                                                 <t t-set="subtotal_price" t-value="subtotal_price + float(data.price_subtotal)"/>
+                                                            </t>
+                                                            <t t-if="o.purchase_type == 'foreign'">
+                                                                <span t-esc="'{0:,.2f}'.format(float(data.subtotal_dollar))"></span>
+                                                            </t>
+                                                            <t t-if="o.type == 'out_refund'">
+                                                                <span t-esc="'{0:,.2f}'.format(float(data.price_subtotal))"></span>
+                                                                <t t-set="subtotal_price" t-value="subtotal_price + float(data.price_subtotal)"/>
+                                                            </t> 
+                                                        </td>
+
+                                                        
+                                                    </tr>
+
+                                                    
+
+                                                    </t>
+                                                </t>
+                                           
+                                                    <!-- <tr >
+                                                        <td colspan="3" style=" font-weight:bold !important; border-bottom: 0px solid;">
+                                                        <h5>  Total </h5>
+                                                        </td>
+                                                        <td style="font-weight:bold !important; border-bottom: 0px solid;">
+                                                            <span t-esc="'{0:,.2f}'.format(float(qty))"/>
+                                                        </td>
+                                                       
+                                                        <td colspan = "2" style="font-weight:bold !important; border-bottom: 0px solid;">
+                                                        <span t-esc="'{0:,.2f}'.format(float(subtotal_price))"/>
+                                                        </td>
+
+                                                    </tr>
+                                         -->
+                                    </table>
+
+                                   
+                                    
+                                    
+                                    <div class="center_div">
+                                        
+                                          
+                                      <div style="text-align:right; justify-content:right;font-size: 18px; font-weight: bold; margin-right: 21px;">
+                                                    <p>
+                                                        <span class="solid" style="font-size: 24px;">Total Amount:</span>
+                                                        <!-- <span t-esc="o.amount_untaxed" style="font-size: 20px;"></span> -->
+                                                        <span t-esc="'{0:,.2f}'.format(float(o.amount_untaxed))" style="font-size: 20px;"/>
+
+                                                    </p>
+                                                    <p>
+                                                        <span class="solid" style="font-size: 18px;">Total Amount:</span>
+                                                        <span t-esc="'{0:,.2f}'.format(float(o.amount_untaxed))" style="font-size: 15px;"/>
+
+                                                    </p>
+                                                    <p>
+                                                        <span class="solid" style="font-size: 18px;">Balance:</span>
+                                                        <span t-esc="'{0:,.2f}'.format(float(o.amount_untaxed))" style="font-size: 15px;"/>
+
+                                                    </p>
+                                    </div>  
+                                            
+                                      
+
+                                   </div>
+
+                                <!-- <div class="left" style="text-align: left; width: 100%; position: absolute; left: 10;">
+                                    <table style="margin-left: auto; margin-right: 0; text-align: right; font-size: 16px;">
+                                        <tr>
+                                            <td style="border-bottom: 0px solid;">
+                                                <div class="total" style="font-size: 18px; font-weight: bold;">
+                                                    <p>
+                                                        <span class="solid" style="font-size: 24px;">Total Amount:</span>
+                                                        <span t-esc="o.amount_untaxed" style="font-size: 20px;"></span>
+                                                        <span t-esc="'{0:,.2f}'.format(float(o.amount_untaxed))" style="font-size: 20px;"/>
+
+                                                    </p>
+                                                    <p>
+                                                        <span class="solid" style="font-size: 18px;">Total Amount:</span>
+                                                        <span t-esc="'{0:,.2f}'.format(float(o.amount_untaxed))" style="font-size: 15px;"/>
+
+                                                    </p>
+                                                    <p>
+                                                        <span class="solid" style="font-size: 18px;">Balance:</span>
+                                                        <span t-esc="'{0:,.2f}'.format(float(o.amount_untaxed))" style="font-size: 15px;"/>
+
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+ -->
+                                
+
+                                    
+                                    <br class="clearfloat"/>
+                                    <br class="clearfloat"/>
+                                    <br class="clearfloat"/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                   
+                                 
+
+                                 
+                                    <div class="center_div">
+                                        <div class="left">
+                                            
+
+                                            <br/>
+                                            <br/>
+                                            <span class="solid">FOR WARRANTY</span>
+                                            <br/>
+                                            PLEASE BRING ORIGINAL PACKING,
+                                            <br/>
+                                            DRIVERS MANUALS &amp; INVOICE
+                                            <br/>
+                                            <br/>
+                                        
+                                            
+                                      
+
+                                </div>
+                                <div class="center_div">
+                                            <!-- Container for all signatures in a row -->
+                                            <div style="display: flex; justify-content: space-between; width: 100%;">
+
+                                                <!-- Seller Signature Section -->
+                                                <div class="right_div" style="flex: 1; text-align: left;">
+                                                    <p class="no-margin">
+                                                        <u>
+                                                            <span class="solid">Received by:</span>
+                                                        </u>
+                                                        <span class="solid">______________</span>
+                                                    </p>
+                                                </div>
+
+                                                <!-- First Buyer Signature Section -->
+                                                <div class="left_div" style="flex: 1; text-align: center;">
+                                                    <p class="no-margin">
+                                                        <u>
+                                                            <span class="solid">Checked by:</span>
+                                                        </u>
+                                                        <span class="solid">______________</span>
+                                                    </p>
+                                                </div>
+
+                                                <!-- Second Buyer Signature Section -->
+                                                <div class="left_div" style="flex: 1; text-align: right;">
+                                                    <p class="no-margin">
+                                                        <u>
+                                                            <span class="solid">Sales Executive:</span>
+                                                        </u>
+                                                        <span class="solid">______________</span>
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                            
+                                            <br/>
+                                            <br/>
+                                            
+
+                                            <p>
+                                                <span class="solid">Received Items in Good Condition</span>
+                                            </p>
+                                        </div>
+
+                                    </div>    
+                                                
+
+                                    
+                                    
+                                              
+                                            
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </t>  <!--end of page-->
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

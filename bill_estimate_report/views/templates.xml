@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+            <report
+            id="Bill_Estimate_Report" 
+            model="account.invoice.wags"
+            name="bill_estimate_report.bill_estimate_xml"
+            file="bill_estimate_report.bill_estimate_xml"
+            report_type="qweb-html"
+            string="Bill Estimate"
+            menu="True"/>
+    </data>
+</odoo>
